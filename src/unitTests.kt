@@ -25,8 +25,26 @@ fun main(){
                 " Rabbi recommended voluntering time " +chiefRabi.volunteer())
 
 }
-/* status = is working
+/* status = is running but not the proper results
 result input:
+You have joined to the community
+Finish with contructing
+You have joined to the community
+Finish with contructing
+You have joined to the community
+Finish with contructing
+java.lang.Exception: must work and learn Torah at least 112.0 hours per week
+Lazy peoople cannot join the community
+Finish with contructing
+bob has to pay 0.0 bob can get maximum: 1000.0 money  bob recommended voluntering time -7
+julia has to pay 0.0 julia can get maximum: 1000.0 money  bob recommended voluntering time -9
+Unmarried do not deserve any money
+kate have to pay 0.0 kate can get maximum: 0.0 money  kate recommended voluntering time -18
+
+
+
+
+ */
 
 
 
