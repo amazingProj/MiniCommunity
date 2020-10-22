@@ -1,5 +1,5 @@
 README.md: touch README.md
 
 all: echo "my first project in kotlin"
-     echo -n "the idea of the project is"
-     echo "to manage a community by community members: married and unmarried"
+     echo "Agenda of the project is to manage a jewish community "
+     echo "Types of member classes by community members: married and unmarried"
