@@ -4,84 +4,69 @@
  * @property volTypes - enum of types of contribution
  * @property type - local instance of the class enum in this class
  */
-abstract class Community_member : Debts_rights {
-    private var _id:String=""  //id
-      private set
-    public var id:String
-        set(value) {
-            _id = value
-        }
-        get() = _id
+abstract class CommunityMember : DebtsandRights {
+//region properties
+    /*********** properties *********************/
 
-    private var friendship_:Int=0  // 0 for a non member
-        private set
-    public var friendship:Int //whether or not he is in community
-        set(value){
-            friendship_ = value
-        }
-        get() = friendship_
+    var id:String=""  //id
+        get() = field
+        set(v){field=v}
+
+    //whether or not he is in community
+    // 0 for a non member
+   var friendship:Int=0
+        get() = field
+         set(v){field = v}
 
 
 
-    private var gender_:Boolean=false  //id
-        private set
-    public var gender:Boolean
-        get() = gender_ //gender: true for man
-        set(value){gender_ = value}
+    var gender:Boolean=false
+        get() = field //gender: true for man
+        set(v){ field =v }
         //name
 
+    //address
+   var address: String =""
+    get()=field
+    set(v){if (v.length <=20)field = v}
 
-   private var address_: String ="" //address
-    private set
-public var address: String
-    get()=address_
-    set(value){address_ = value}
+    //birthday date
+    var birthday: String=""
+        get()=field
+        set(v){if(v.length <= 20)field=v}
 
-    private var birthday_: String ="" //address
-        private set
-    public var birthday: String //birthday
-        get()=birthday_
-        set(value){birthday_ = value}
+    //learn Jewish subjects: In hours
+   //learn Torah: hours per week
+   public var Torah:Int =0 //assume that people learn torah per complete hours
+       get()=field
+        private set(v){if(v >=0)field=v}
 
-    //learn Torah: hours
-   private var Torah_:Int=0 //learn Torah: hours per week
-    private  set
-   public var Torah:Int //assume that people learn torah per complete hours
-       get()=Torah_
-    set(value){Torah_=value}
+    //How many hours spends on working
 
-        //works
+   var works:Int=0
+    get() = field
+    private set(v) {if (v>=0)field=v}
 
-    private var works_:Int=0 //learn Torah: hours per week
-        private  set
-    public var works:Int //assume that people learn torah per complete hours
-        get()=works_
-        set(value){works_=value}
+    var payment:Float = 0f
+        get() = field
+        private set(v) {if (v >= 0f) field = v}
 
-
-    private var payment_: Float = 0f //working payment
-        private set
-    public val payment:Float
-        get() = payment_
-
-    private var attempts_: Int =0
-        private  set
-        //Gemach remaining attempts
-        get() = attempts_
-    public  var attempts:Int
-         get() = attempts_
-         set(value) {attempts_ = value }
+     var attempts:Int=0
+         get() = field
+         set(v) {if (v>=0)field  = v }
 
     //Enum: type of volunteering contribution
-     enum class volTypes(val contribution: String) { SPIRIT(contribution ="spirit"),
-        PRACTICAL(contribution ="practical"), MUSICIAN(contribution ="musician"),NOTYET(contribution = "not yet") }
-    private var str_:String =""
-          private set
-    public var str:String
-      get()= str_
-      set(value) {str_ = value}
+     public enum class volTypes { SPIRIT, PRACTICAL, MUSICIAN }
+    fun getVolTypesbyName(name:String) = volTypes.valueOf(name)
+    fun getVolTypes() = volTypes.valueOf(str)
 
-    public var type:volTypes = volTypes.NOTYET // the variable must be initialized
+     var str:String =""
+      get()= field
+      set(value) {field = value}
+
+//endregion
+
+    /**************** c'ctor **********************/
 
     /**
      * @author assaf Hillel
@@ -98,15 +83,24 @@ public var address: String
      * @exception regular_exception he works and learn less time than proper amount
      * @exception regular_exception do not learn one hours per day Torah
      */
-    constructor(_id: String, _friendship: Int =0, _gender: Boolean, _address: String, _birthday: String,
-                _Torah: Int = 0, _work: Int = 0,_str:String,
-                _payment: Float = 0f, _attempts: Int = 0) {
+    constructor(
+        _id: String,
+        _friendship: Int =0,
+        _gender: Boolean,
+        _address: String,
+        _birthday: String,
+        _Torah: Int ,
+        _work: Int ,
+        _str:String,
+        _payment: Float ,
+        _attempts: Int
+    ) {
         try {
             id = _id;friendship = _friendship;
             gender = _gender;address = _address;birthday = _birthday;Torah = _Torah;
-            works = _work; str = _str; type = volTypes.SPIRIT
+            works = _work;payment =_payment; str = _str; volTypes.valueOf(str);attempts = _attempts
 
-            var condition: Float = (2 * 7 * 24).toFloat()/3f
+            var condition: Float = ( 6 * 18 +9).toFloat()/3f
             if ((_work + _Torah).toFloat() < condition)
                 throw Exception("must work and learn Torah at least $condition hours per week")
             if ((_Torah / 7) == 0)
@@ -115,11 +109,26 @@ public var address: String
             this.friendship = 1; //you are a member
         } catch (e: Exception) {
             println(e)
-            println("Lazy peoople cannot join the community")
+            println("Lazy people cannot join the community")
             friendship = 0;
         } finally {
-            println("Finish with contructing")
+            println("Finish with constructing")
         }
     }
+
+    /**************** functions *********************/
+
+    //object expression
+    fun example(impInterface: DebtsandRights){
+        impInterface.charge()
+        impInterface.desrveMoneyfromGemach()
+        impInterface.recommendedVolunteerHours()
+    }
+
+
+    override fun toString(): String {
+        return "id number: $id"
+    }
+
 
 }
