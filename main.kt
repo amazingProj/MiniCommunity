@@ -124,7 +124,7 @@ fun main() {
     community.addCommunityMembers(binyamin);
 
     println(community.totalTaxesAmount())
-    println(community.GemachApprovalRequest(bob))
+    println(community.GemachApprovalRequest(binyamin))
     println(community.sortedHoursofVolunteering())
 }
 /*
@@ -142,7 +142,8 @@ Finish with constructing
 You have joined to the community
 Finish with constructing
 4500.0
-2450
+4200
 [id number: 111111111Married status          Recommended volunteer hours : 0, id number: 222222222Married status          Recommended volunteer hours : 0, id number: 333333333Married status          Recommended volunteer hours : 1, id number: 666666666Married status          Recommended volunteer hours : 0, id number: 4444444444Unmarried status          Recommended volunteer hours : 17]
 
  */
+
