@@ -1,7 +1,11 @@
-# Exer1_
-my first kotlin project 
+# Kotlin project
 
-Agenda of the project is to manage a jewish community 
+my first kotlin project to know the langauge.
 
+Tools like: interfaces, classes, inheritance, annonymous classes(called in Java) 
 
-Types of member classes by community members: married and unmarried
+A demo of managing a jewish community 
+
+I created a classes of a community members: married and unmarried.
+
+Then checks all the functions. 
