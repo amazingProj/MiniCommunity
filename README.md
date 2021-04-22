@@ -1,3 +1,5 @@
+Can be run by Inteliji idea version 
+
 # Kotlin project
 
 my first kotlin project to know the langauge.
